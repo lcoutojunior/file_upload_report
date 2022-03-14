@@ -30,17 +30,15 @@
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                               Make your upload:                                
-                            </div>                                                    
+                        	@if(isset($status))
+								<a href="/" title="Click to go back!">File has been uploaded!</a>
+							@endif  
                         </div>
                         
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                        	<form action="{{url('/reports')}}" method="post" enctype="multipart/form-data">
-								@csrf
-								<input name="file_report" type="file">
-								<input type="submit" style="border-radius: 0.25rem;" value="Upload">
-							</form>
+                            <div class="flex items-center">
+                               <a href="/reports" title="Click to check the Reports">Check the report</a>                                
+                            </div>                                                    
                         </div>
                     </div>
                 </div>

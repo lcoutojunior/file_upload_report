@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>File Upload Report</title>
+        <title>Reports</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
@@ -24,26 +24,10 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                File Upload Report
-
-                <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
-                    <div class="grid grid-cols-1 md:grid-cols-2">
-                        
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                            <div class="flex items-center">
-                               Make your upload:                                
-                            </div>                                                    
-                        </div>
-                        
-                        <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                        	<form action="{{url('/reports')}}" method="post" enctype="multipart/form-data">
-								@csrf
-								<input name="file_report" type="file">
-								<input type="submit" style="border-radius: 0.25rem;" value="Upload">
-							</form>
-                        </div>
-                    </div>
-                </div>
+                Reports:
+				@if(isset($reports))
+					oi
+				@endif                
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
                     <div class="text-center text-sm text-gray-500 sm:text-left">

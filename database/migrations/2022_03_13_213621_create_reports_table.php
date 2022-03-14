@@ -14,13 +14,15 @@ return new class extends Migration
     public function up()
     {
         Schema::create('reports', function (Blueprint $table) {
-        	$table->id();
-        	$table->string('name');
-        	$table->string('email')->unique();
-        	$table->timestamp('email_verified_at')->nullable();
-        	$table->string('password');
-        	$table->rememberToken();
-        	$table->timestamps();
+        	$table->bigIncrements('id');
+        	$table->string('buyer');
+        	$table->string('description');
+        	$table->float('unit_price');
+        	$table->float('qty');
+        	$table->string('address');
+        	$table->string('supplier');
+        	$table->float('revenue');
+            $table->timestamps();
         });
     }
 
@@ -31,8 +33,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::create('reports', function (Blueprint $table) {
-            $table->dropTable();
-        });
+        Schema::dropIfExists('reports');
     }
 };
