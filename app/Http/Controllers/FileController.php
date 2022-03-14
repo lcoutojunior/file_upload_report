@@ -36,6 +36,11 @@ class FileController extends Controller {
 	public function store(Request $request){
 		if($request->hasFile('file_report')){
 
+			if($request->file_report->getClientMimeType() != "text/plain"){
+				$status = 1;
+				return view('uploaded')->with('status', $status);
+			}
+
 			$fileContent = file_get_contents($request->file('file_report'));
 			
 			$arrFileContent = explode("\n", $fileContent);
@@ -53,7 +58,7 @@ class FileController extends Controller {
 				$r->save();
 			}
 		
-			$status = true;
+			$status = 2;
 			return view('uploaded')->with('status', $status);
 		}else{
 			return redirect('/');
