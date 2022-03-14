@@ -8,6 +8,7 @@
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+		<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
         <!-- Styles -->
         <style>
@@ -24,9 +25,47 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                Reports:
+                <div class="flex items-center sm:justify-between text-center">
+	               	<span><h2><strong>Reports</strong></h2></span>
+                </div>
 				@if(isset($reports))
-					oi
+					<table class="table table-hover">
+				    	<thead>
+				    		<tr>
+						    	<th scope="col">#</th>
+						    	<th scope="col">Buyer</th>
+						    	<th scope="col">Description</th>
+						    	<th scope="col">Unit Price</th>
+						    	<th scope="col">Qty</th>
+						    	<th scope="col">Address</th>
+						    	<th scope="col">Supplier</th>
+						    	<th scope="col">Revenue</th>
+				    		</tr>
+				  		</thead>
+					  	<tbody>
+					  		@php
+					  			$total=0.0
+					  		@endphp
+							@foreach($reports as $report)
+							<tr>
+						    	<th scope="row">{{$report["id"]}}</th>
+						    		<td>{{$report["buyer"]}}</td>
+						      		<td>{{$report["description"]}}</td>
+						      		<td style="text-align: right;">{{$report["unit_price"]}}</td>
+						      		<td style="text-align: center;">{{$report["qty"]}}</td>
+						      		<td>{{$report["address"]}}</td>
+						      		<td>{{$report["supplier"]}}</td>
+						      		<td style="text-align: right;">R$ {{$report["revenue"]}}</td>
+							</tr>
+								@php
+									$total = $total + $report["revenue"]
+								@endphp
+					    	@endforeach
+					  	</tbody>
+				  </table>
+				  <div style="text-align: right;">
+				  	Total Revenue: R$ {{$total}}
+				  </div>
 				@endif                
 
                 <div class="flex justify-center mt-4 sm:items-center sm:justify-between">
@@ -43,4 +82,7 @@
             </div>
         </div>
     </body>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    
 </html>

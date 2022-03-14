@@ -24,21 +24,24 @@
         <div class="relative flex items-top justify-center min-h-screen bg-gray-100 dark:bg-gray-900 sm:items-center py-4 sm:pt-0">
             
             <div class="max-w-6xl mx-auto sm:px-6 lg:px-8">
-                File Upload Report
+                <div class="flex items-center sm:justify-between text-center">
+	               	<span><h2><strong>File Report Upload</strong></h2></span>
+	               	<span style="background-color: steelblue; border-radius: 0.25rem; padding: 0.25rem;"><a href="/reports" title="Click to check the Reports!">Check Reports</a></span>               	
+                </div>
 
                 <div class="mt-8 bg-white dark:bg-gray-800 overflow-hidden shadow sm:rounded-lg">
                     <div class="grid grid-cols-1 md:grid-cols-2">
                         
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-t-0 md:border-l">
-                        	@if(isset($status))
-								<a href="/" title="Click to go back!">File has been uploaded!</a>
-							@endif  
+                        	Upload:
                         </div>
                         
                         <div class="p-6 border-t border-gray-200 dark:border-gray-700 md:border-l">
-                            <div class="flex items-center">
-                               <a href="/reports" title="Click to check the Reports">Check the report</a>                                
-                            </div>                                                    
+                        	@if($status == 1)
+                        		<a href="/" title="Click to go back!">Wrong file type!</a>
+                        	@elseif($status == 2)
+								<a href="/" title="Click to go back!">File has been uploaded!</a>
+							@endif                                                                                  
                         </div>
                     </div>
                 </div>
