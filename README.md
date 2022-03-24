@@ -1,6 +1,7 @@
 # File Upload Report
 
 Web App to upload data file (separated by '\t'), presents in bootstrap table and calculates total Revenue.
+This data file is located in root folder as "dados.txt".
 ## Features
 
 - Mimetype checked.
